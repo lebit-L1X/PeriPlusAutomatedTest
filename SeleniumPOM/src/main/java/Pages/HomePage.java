@@ -26,10 +26,7 @@ public class HomePage extends BasePage{
         input(searchBar, searchQuery);
     }
 
-    public void waitForButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-    }
+
 
     public SearchPage operateSearch(String searchQuery) {
         inputSearchBar(searchQuery);

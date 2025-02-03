@@ -13,13 +13,23 @@ public class SearchTest extends BaseTest{
     final String searchAuthorCorrect = "";
     final String searchIncorrect = "WRONG1293192041024AAA";
 
-//    @Test
-//    protected void testSearchIncorrect(){
-//        var homePage = loginPage.loginAction(correctEmail,correctPassword);
-//        if(homePage!=null){
-//            var searchPage = homePage.operateSearch(searchIncorrect);
-//        }
-//    }
+    @Test
+    protected void testSearchCorrect(){
+        var homePage = loginPage.loginAction(correctEmail,correctPassword);
+        if(homePage!=null){
+            var searchPage = homePage.operateSearch(searchNameCorrect);
+            if (searchPage!= null){
+             var  productPage = searchPage.findSelectBook();
+                if (productPage != null){
+                    var cartPage = productPage.purchaseProcess();
+                    if (cartPage != null){
+                        Assert.assertTrue(cartPage.validateBook());
+                    }
+                }
+            }
+
+        }
+    }
 
 
 

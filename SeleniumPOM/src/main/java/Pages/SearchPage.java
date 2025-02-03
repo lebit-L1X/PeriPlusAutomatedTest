@@ -10,7 +10,8 @@ import java.util.List;
 
 public class SearchPage extends BasePage{
     final private By searchResults = By.className("results");
-    final private By productFound = By.tagName("h3");
+    final private By preloader = By.className("preloader");
+    final private By productFound = By.xpath("/html/body/section/div/div/div[2]/div[1]/div[1]/div/div[1]/a/img[2]");
 
 
 
@@ -23,9 +24,15 @@ public class SearchPage extends BasePage{
 
         }
 
+
+
     public void findBook() {
+        waitForPreloaderToDisappear(preloader);
         click(productFound);
     }
-
+    public ProductPage findSelectBook(){
+        findBook();
+        return new ProductPage(driver);
+    }
 
 }
